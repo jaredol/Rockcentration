@@ -39,6 +39,7 @@ for(var i = 0; i < joinedArray.length; i++) {
 
 
 function selectTiles(){
+
     if(firstChoice == undefined && secondChoice == undefined){
         // Grab class of clicked tile
         var tileClass = this.className;
@@ -52,10 +53,13 @@ function selectTiles(){
         // Set second Choice to the classname
         secondChoice = tileClass;
         console.log("second choice is " + secondChoice);
+        // we need to disble further clicks on other elements here:
+        $('.tile-cover').unbind( "click" );
         $(this).find('.tile-cover').fadeToggle( 100, "linear" ).addClass('choice2');
 
         // CORRECT SELECTION:
         if(firstChoice == secondChoice ){
+            
             console.log("match!");
                 // remove ability to click
                 $('.choice1').unbind( "click" );
@@ -82,6 +86,9 @@ function selectTiles(){
 }
 
 
+$('.tile').on('click', selectTiles);
+
+
 function closeLastSelection(){
     console.log("closing your last selection");
     $('.choice1.tile-cover').delay(700).fadeToggle( 100, "linear" );
@@ -95,16 +102,6 @@ function closeLastSelection(){
 
 
 
-// function to check if firstChoice and secondChoice are equal
-function isEqual(){
-
-    if(firstChoice == secondChoice ){
-        console.log("match!");
-    }
-}
-
-
-$('.tile').on('click', selectTiles);
 
 
 
