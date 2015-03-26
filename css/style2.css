@@ -1,0 +1,129 @@
+html, body { height:100%; }  /* Ensure Bg img is not cutoff */
+
+
+/* Tiles */
+
+
+body {
+    background:url(../images/bg.jpg) no-repeat;
+    color:#fff;
+    background-size: cover;
+}
+
+.wrapper {
+    width:818px;
+    margin: 0 auto;
+    }
+
+#tilesWrap {
+    width:818px;
+    padding:2px 0 2px 2px;
+    margin:auto;
+    overflow: hidden;
+    background-image:url(../images/transparent.png);
+    border-radius: 7px;
+}
+
+
+img {
+    max-width: 100%;
+    position: absolute;
+}
+
+.choice1 img, .choice2 img, .matched img {
+  z-index: 1!important;
+}
+
+
+h1 {
+    text-align: center;
+    font-family: "Rockwell Extra Bold";
+    font-size:3em;
+    color: red;
+    font-weight: normal;
+    
+}
+h1 span {
+    color:yellow;
+}
+
+p.intro {
+    font-family: 'New Rocker', sans-serif;
+    font-family: 'Voces', cursive;
+    font-size: 1em;
+    text-transform: uppercase; 
+    text-align: center;
+    
+}
+
+#gameOverMsg {
+    font-family: 'New Rocker', sans-serif;
+    font-family: 'Voces', cursive;
+    font-size: 1em;
+    text-transform: uppercase; 
+    text-align: center;
+    margin-top:20px;
+}
+
+
+#attempts {
+    font-family: 'Pacifico', cursive;
+    position: absolute;
+}
+#pairsAttempted {
+    font-family: 'Pacifico', cursive;
+    font-size: 3em;
+}
+
+
+/* Flipping Magic */
+
+.tile-cover { display: none!important; }
+
+.tile {
+/*    width:100px;
+    height:100px;
+    margin: 3px;
+    float: left;
+    position: relative;*/
+
+}
+
+.tile{ 
+    width:130px; 
+    height:130px; 
+    margin:3px; 
+    float:left; 
+    position: relative;
+}
+.tile > .front{
+    position:absolute;
+    transform: perspective( 600px ) rotateY( 0deg );
+    background:#333; width:130px; height:130px; border-radius: 7px;
+    backface-visibility: hidden;
+    transition: -webkit-transform .5s linear 0s;
+    transition: transform .3s linear 0s;
+}
+.tile > .back{
+    position:absolute;
+    transform: perspective( 600px ) rotateY( 180deg );
+    background: #80BFFF; width:130px; height:130px; border-radius: 7px;
+    backface-visibility: hidden;
+    transition: transform .3s linear 0s;
+}
+.tile.flipping > .front{
+    transform: perspective( 600px ) rotateY( -180deg );
+}
+.tile.flipping > .back{
+    transform: perspective( 600px ) rotateY( 0deg );
+}
+
+.tile > .front:hover {
+    background: #111;
+    cursor: pointer;
+}
+
+
+
+
+
