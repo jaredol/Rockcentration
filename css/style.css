@@ -6,9 +6,12 @@
 .tile {
     width:100px;
     height:100px;
-    margin: 5px;
+    margin: 3px;
     float: left;
     position: relative;
+    border:1px solid #000;
+    /*box-sizing:box-border;*/
+
 }
 
 .tile-cover {
@@ -26,10 +29,16 @@ img {
     z-index: -1;
 }
 
-/*.hide {
-    display: none;
+.tile:hover {
+    opacity:0.85;
+
 }
 
-*/
+
+.matched {
+  pointer-events: none;
+}
+
+
 
 

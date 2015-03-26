@@ -4,9 +4,8 @@
 var firstChoice;
 var secondChoice;
 
-MAXCARDS = 20;
-//var options = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var options = ["0", "1", "2"];
+MAXCARDS = 10;
+var options = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
 
 var shuffledArray = [];
@@ -15,7 +14,7 @@ var joinedArray;
 var pairsMatched = 0;
 
 
-for(i = 0; i < MAXCARDS; i++) {
+for(i = 0; i < MAXCARDS / 2; i++) {
     var rdmIdx = Math.floor(Math.random() * options.length)
     shuffledArray.push(options[rdmIdx]);
 }
@@ -39,50 +38,54 @@ for(var i = 0; i < joinedArray.length; i++) {
 
 
 function selectTiles(){
-
+        // Making first choice
     if(firstChoice == undefined && secondChoice == undefined){
         // Grab class of clicked tile
         var tileClass = this.className;
         // Set First Choice to the classname
         firstChoice = tileClass;
-        $(this).find('.tile-cover').fadeToggle( 100, "linear" ).addClass('choice1');
+        $(this).find('.tile-cover').fadeToggle( 100, "linear" ).parent().addClass('choice1');
         console.log("first choice is " + firstChoice);
-
+        // Making second choice
     } else if (firstChoice !== undefined && secondChoice == undefined){
         var tileClass = this.className;
         // Set second Choice to the classname
         secondChoice = tileClass;
         console.log("second choice is " + secondChoice);
         // we need to disble further clicks on other elements here:
-        $('.tile-cover').unbind( "click" );
-        $(this).find('.tile-cover').fadeToggle( 100, "linear" ).addClass('choice2');
+        $('.tile').addClass('disableClicks');
+        $(this).find('.tile-cover').fadeToggle( 100, "linear" ).parent().addClass('choice2');
+        
 
         // CORRECT SELECTION:
         if(firstChoice == secondChoice ){
+            console.log("correct");
             
-            console.log("match!");
-                // remove ability to click
-                $('.choice1').unbind( "click" );
-                $('.choice2').unbind( "click" );
-                // Reset choices
-                firstChoice = undefined;
-                secondChoice = undefined;
-                pairsMatched++;
-                $('#pairsMatched').html(pairsMatched);
+            $('.choice1').addClass('matched');
+            $('.choice2').addClass('matched');
+
+            $('.tile.choice1').removeClass('choice1');
+            $('.tile.choice2').removeClass('choice2');
+
+
+            // Reset choices
+            firstChoice = undefined;
+            secondChoice = undefined;
+            pairsMatched++;
+            $('#pairsMatched').html(pairsMatched);
 
 
         // INCORRECT SELECTION:
         } else {
             console.log("no match!");
+
             closeLastSelection();
-            $('.tile-cover').removeClass('.choice1');
-            $('.tile-cover').removeClass('.choice2');
+            $('.tile.choice1').removeClass('choice1');
+            $('.tile.choice2').removeClass('choice2');
         }
 
     }
-    // else if ( firstChoice !== undefined && secondChoice !== undefined ) {
-    //     console.log("stop!");
-    // }
+
 }
 
 
@@ -91,11 +94,19 @@ $('.tile').on('click', selectTiles);
 
 function closeLastSelection(){
     console.log("closing your last selection");
-    $('.choice1.tile-cover').delay(700).fadeToggle( 100, "linear" );
-    $('.choice2.tile-cover').delay(600).fadeToggle( 100, "linear");
+    $('.choice1 .tile-cover').delay(700).fadeToggle( 100, "linear" );
+    $('.choice2 .tile-cover').delay(600).fadeToggle( 100, "linear");
     // Reset choices
     firstChoice = undefined;
     secondChoice = undefined;
+
+    $('.tile.choice1').removeClass('.choice1');
+    $('.tile.choice2').removeClass('.choice2');
+
+    $('.tile').removeClass('disableClicks');
+}
+
+function gameOver(){
 
 }
 
