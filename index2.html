@@ -13,8 +13,10 @@
 <body>
 
     <!--  <p>Pairs matched:<span id="pairsMatched">0</span></p> -->
-    <p id="attempts">Attempts:<span id="pairsAttempted">0</span>
-    </p>
+    <div id="attempts">
+        <p>Attempts:</p> 
+        <p id="pairsAttempted">0</p>
+    </div>
 
     <div class="wrapper">
 
@@ -27,11 +29,11 @@
         </div>
 
         <div id="gameOverMsg">
-
-
-        <div>
-            <button id="resetGame">Reset Game</button>
+            <!-- dynamicallly generated messsage here -->
         </div>
+
+        <div class="btnWrap"><div id="resetGame" class="btn">Play again</div></div>
+
 
 
     <script src="js/jquery.js"></script>

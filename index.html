@@ -3,19 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Memory</title>
+    <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 
     
-    <h1>rock-MEM</h1>
+<div class="wrapper">
+    <h1><span>ROCK</span>CENTRATION</h1>
     
-    <p>Pairs matched:<span id="pairsMatched">0</span></p>
-
+    <!-- <p>Pairs matched:<span id="pairsMatched">0</span></p> -->
+     <p id="attempts">Attempts:<span id="pairsAttempted">0</span></p>
+    
+     <p>Put your memory to the test by matching up these classic album covers in record time...</p>
+    
     <div id="tilesWrap"></div>
+    
+    <div><button id="resetGame">Reset Game</button></div>
+</div>
+
 
     <script src="js/jquery.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/underscore-min.js"></script>
+
+
+
 
 
 </body>

@@ -6,7 +6,7 @@ var secondChoice;
 
 MAXCARDS = 32;
 MAXCARDS = 18;
-MAXCARDS = 6;
+// MAXCARDS = 4;
 var options = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "14", "15", "16", "17", "18", "19", "20"];
 
 
@@ -73,7 +73,6 @@ function selectTiles(){
         secondChoice = tileClass;
         console.log("second choice is " + secondChoice);
         // we need to disble further clicks on other elements here:
-        //$('.tile').addClass('disableClicks');
         $(this).addClass('choice2 flipping');
         
 
@@ -97,7 +96,11 @@ function selectTiles(){
             $('#pairsAttempted').html(pairsAttempted);
 
             if(totalPairs == pairsMatched) {
-                $('#gameOverMsg').fadeIn().html("YOU DID IT!!  Congratualtions, you it took you " + pairsAttempted + " attempts. See if you can beat it next time");
+                setTimeout(function() { 
+                    $('#gameOverMsg').fadeIn().html("<h2>YOU DID IT!!</h2>  Congratulations, it took you <span>" + pairsAttempted + "</span> attempts. See if you can beat it next time");
+                    $('.btnWrap').slideDown();
+                }, 800);
+
             }
 
 
@@ -111,20 +114,12 @@ function selectTiles(){
                 closeLastSelection(); 
             }, 1000);
 
-            //debugger
-            
-         
-
             pairsAttempted++
             $('#pairsAttempted').html(pairsAttempted);
             $('.tile.choice1').removeClass('choice1');
             $('.tile.choice2').removeClass('choice2');
             
-            // attempts = attempts + 1;
-            // $('#pairsAttempted').html(attempts);
-        }
-
-        
+        }      
 
     }
 
@@ -134,7 +129,6 @@ function selectTiles(){
 $('#tilesWrap').on('click', '.tile', selectTiles);
 
 function resetDefaults(){
-    console.log("reset deefs");
     shuffledArray = [];
     shuffledArrayDuplicate;
     joinedArray;
@@ -145,8 +139,6 @@ function resetDefaults(){
 }
 
 
-//newBoard();
-
 function closeLastSelection(){
     console.log("closing your last selection");
     $('.tile:not(.matched)').delay(2000).removeClass('flipping');
@@ -154,40 +146,9 @@ function closeLastSelection(){
     // Reset choices
     firstChoice = undefined;
     secondChoice = undefined;
-
-    // $('.tile.choice1').removeClass('.choice1');
-    // $('.tile.choice2').removeClass('.choice2');
-
 }
 
-//$('#resetGame').on('click', resetGame);
 $('#resetGame').on('click', newBoard);
-
-
- // FLIPPING
-
-$('.tile').on('click', function(){
-  //selectTiles();
-    //$(this).toggleClass('flipping');
-    //$(this).addClass('choice1');
-
-});
-
-
-
-
-// function resetGame(){
-//     $('#tilesWrap').empty();
-//     newBoard();
-// }
-
-
-// $('button').on('click', function(){
-//     newBoard();
-//     $('.tile').on('click', selectTiles);
-// })
-
-
 
 
 

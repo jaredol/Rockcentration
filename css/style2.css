@@ -24,15 +24,14 @@ body {
     border-radius: 7px;
 }
 
-
 img {
     max-width: 100%;
     position: absolute;
 }
 
-.choice1 img, .choice2 img, .matched img {
+/*.choice1 img, .choice2 img, .matched img {
   z-index: 1!important;
-}
+}*/
 
 
 h1 {
@@ -53,7 +52,8 @@ p.intro {
     font-size: 1em;
     text-transform: uppercase; 
     text-align: center;
-    
+    line-height: 130%;
+    margin-bottom: 3em;
 }
 
 #gameOverMsg {
@@ -65,29 +65,35 @@ p.intro {
     margin-top:20px;
 }
 
+#gameOverMsg span {
+    color:red;
+    }
 
 #attempts {
-    font-family: 'Pacifico', cursive;
+    font-family: Helvetica, Arial;
     position: absolute;
+    left:30px;
+    top:30px;
 }
+
+#attempts p { 
+    margin:0; 
+    line-height: 100%; 
+    text-align: center; 
+    padding-bottom: .3em; 
+}
+
 #pairsAttempted {
     font-family: 'Pacifico', cursive;
-    font-size: 3em;
+    font-size: 32px;
+    background-color: red;
+    border-radius: 15px;
+    width:1em;
+    padding: 0 .1em;
 }
 
 
 /* Flipping Magic */
-
-.tile-cover { display: none!important; }
-
-.tile {
-/*    width:100px;
-    height:100px;
-    margin: 3px;
-    float: left;
-    position: relative;*/
-
-}
 
 .tile{ 
     width:130px; 
@@ -99,10 +105,15 @@ p.intro {
 .tile > .front{
     position:absolute;
     transform: perspective( 600px ) rotateY( 0deg );
-    background:#333; width:130px; height:130px; border-radius: 7px;
+    background:#222; width:130px; height:130px; border-radius: 7px;
     backface-visibility: hidden;
     transition: -webkit-transform .5s linear 0s;
     transition: transform .3s linear 0s;
+    background-image: url(../images/guitar.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.85;
+
 }
 .tile > .back{
     position:absolute;
@@ -119,11 +130,42 @@ p.intro {
 }
 
 .tile > .front:hover {
-    background: #111;
+    background-image: url(../images/guitar.png);
     cursor: pointer;
+    opacity: 1.0;
 }
 
 
+
+/* Snazzy Button */
+
+
+.btnWrap {
+    text-align: center;
+    display:none;
+    margin-top:1em;
+}
+
+.btn {
+    display:inline-block;
+    padding:0.4em .8em;
+    font-family: 'New Rocker', sans-serif;
+    font-size:1.2em;
+    text-transform: uppercase;
+    border-radius: 7px;
+    background: #a90329; /* Old browsers */
+    background: -moz-linear-gradient(top,  #a90329 0%, #8f0222 44%, #6d0019 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a90329), color-stop(44%,#8f0222), color-stop(100%,#6d0019)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019',GradientType=0 ); /* IE6-9 */
+}
+
+.btn:hover {
+    cursor: pointer;
+}
 
 
 
