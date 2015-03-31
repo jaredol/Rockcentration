@@ -5,11 +5,11 @@ var firstChoice;
 var secondChoice;
 
 MAXCARDS = 18;
-//MAXCARDS = 4;
-var options = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "14", "15", "16", "17", "18", "19", "20"];
+var options = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"];
 
 
-var shuffledArray = [];
+
+//var shuffledArray = _.shuffle(options)
 var shuffledArrayDuplicate;
 var joinedArray;
 
@@ -19,18 +19,17 @@ var pairsAttempted = 0;
 
 function newBoard(){
 
+    //create random array
+    var shuffledArray = _.shuffle(options)
+    shuffledArray = shuffledArray.splice(0, 9)  // reduce the size down to 18 items
+
     resetDefaults(); // sets attempts and matches back to Zero
 
      $('#tilesWrap').empty(); // empty out exisiting tiles
-    
-
-    for(i = 0; i < MAXCARDS / 2; i++) {
-        var rdmIdx   = Math.floor(Math.random() * options.length)
-        shuffledArray.push(options[rdmIdx]);
-    }
 
     // create a copy of shuffled array.
     shuffledArrayDuplicate = shuffledArray;
+
 
     // join the two shuffled arrays
     joinedArray = shuffledArray.concat(shuffledArrayDuplicate);
@@ -41,7 +40,6 @@ function newBoard(){
         $('#tilesWrap').append('<div class="tile ' + joinedArray[i] + '"><img class="back" src="images/' + joinedArray[i] + '.jpg"><div class="front"></div></div>');
 
     }
-
 
 }
 
@@ -141,15 +139,11 @@ function resetDefaults(){
 function closeLastSelection(){
     console.log("closing your last selection");
     $('.tile:not(.matched)').delay(2000).removeClass('flipping');
-    //$('.tile').delay(600).fadeToggle( 100, "linear");
     // Reset choices
     firstChoice = undefined;
     secondChoice = undefined;
 }
 
 $('#resetGame').on('click', newBoard);
-
-
-
 
 
