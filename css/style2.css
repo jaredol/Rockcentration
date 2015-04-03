@@ -1,3 +1,14 @@
+
+
+
+
+@font-face {
+    font-family: 'RockIt';
+    src: url('../Rock_it.ttf') format('truetype'); 
+}
+
+
+
 html, body { height:100%; }  /* Ensure Bg img is not cutoff */
 
 
@@ -29,19 +40,16 @@ img {
     position: absolute;
 }
 
-/*.choice1 img, .choice2 img, .matched img {
-  z-index: 1!important;
-}*/
-
 
 h1 {
     text-align: center;
-    font-family: "Rockwell Extra Bold";
+    font-family: "Rockwell Extra Bold", RockIt;
     font-size:3em;
     color: red;
     font-weight: normal;
     
 }
+
 h1 span {
     color:yellow;
 }
@@ -136,7 +144,6 @@ p.intro {
 }
 
 
-
 /* Snazzy Button */
 
 
@@ -160,7 +167,6 @@ p.intro {
     background: -o-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* IE10+ */
     background: linear-gradient(to bottom,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019',GradientType=0 ); /* IE6-9 */
 }
 
 .btn:hover {
