@@ -1,12 +1,7 @@
-
-
-
-
 @font-face {
     font-family: 'RockIt';
     src: url('../Rock_it.ttf') format('truetype'); 
 }
-
 
 
 html, body { height:100%; }  /* Ensure Bg img is not cutoff */
@@ -24,7 +19,7 @@ body {
 .wrapper {
     width:818px;
     margin: 0 auto;
-    }
+}
 
 #tilesWrap {
     width:818px;
@@ -43,11 +38,11 @@ img {
 
 h1 {
     text-align: center;
-    font-family: "Rockwell Extra Bold", RockIt;
+    font-family: "Rockwell Extra Bold", Bevan;
     font-size:3em;
     color: red;
     font-weight: normal;
-    
+    margin-bottom: .2em
 }
 
 h1 span {
@@ -60,8 +55,10 @@ p.intro {
     font-size: 1em;
     text-transform: uppercase; 
     text-align: center;
-    line-height: 130%;
+    line-height: 150%;
+    margin:auto;
     margin-bottom: 3em;
+    width: 60%;
 }
 
 #gameOverMsg {
@@ -121,6 +118,7 @@ p.intro {
     background-repeat: no-repeat;
     background-size: contain;
     opacity: 0.85;
+    transition: opacity 0.3s ease;
 
 }
 .tile > .back{
@@ -142,6 +140,8 @@ p.intro {
     cursor: pointer;
     opacity: 1.0;
 }
+
+
 
 
 /* Snazzy Button */
